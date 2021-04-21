@@ -1,11 +1,12 @@
 import json
 
 
-# function that will retrieve dictaniary value and then add it to the final_output
+# function that will retrieve dictaniary value and then add it to the fial_output
 def conversion(user_input):
     # importing json file and loading it in memory as a python dictanaroy
     with open("morsecode.json", "r") as rf:
         decoded_data = json.load(rf)
+
     # breaking string into a list of characters
 
     # converting string to lower case since the dict is lowercase, no uppercase letters
@@ -28,8 +29,10 @@ def conversion(user_input):
         in_dict = working_on in character_list
         if in_dict:
             dict_value = decoded_data.get(working_on)
-            final_output = final_output + dict_value
+            # adding space because after every character there is a space
+            final_output = final_output + dict_value + " "
+
         else:
-            working_on = " "
+            final_output = final_output + "|"
         i = i + 1
     print(final_output)
