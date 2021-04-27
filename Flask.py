@@ -10,7 +10,7 @@ def morse_code(text1):
     text1 = text1.lower()
     # text2 = text2.upper()
     combine = conversion(text1)
-    # i thihnk in order to work you need to get a return in converting.py method
+    # i think in order to work you need to get a return in converting.py method
     return combine
 
 

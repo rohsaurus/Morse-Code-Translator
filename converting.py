@@ -35,4 +35,4 @@ def conversion(user_input):
         else:
             final_output = final_output + "|"
         i = i + 1
-    print(final_output)
+    return final_output
