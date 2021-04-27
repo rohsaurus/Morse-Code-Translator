@@ -1,10 +1,36 @@
-# importing method from converting file
+# webserver file
+# using flask, runs the websever
+from flask import Flask, request, render_template, jsonify
 from converting import *
 
-# grabbing user input to run the method that will convert
-user_input = input("Enter in a sentence that you would like converted into morse code.\nPlease note that entering a "
-                   "space will cause in a replacement with the | character. Also note that the backward slash(\) will "
-                   "cause the program to break so please refrain from using it.")
+app = Flask(__name__)
 
-# running the function that will convert to morse code and print it out
-conversion(user_input)
+
+def morse_code(text1):
+    text1 = text1.lower()
+    # text2 = text2.upper()
+    combine = conversion(text1)
+    # i think in order to work you need to get a return in converting.py method
+    return combine
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/join', methods=['GET', 'POST'])
+def my_form_post():
+    text1 = request.form['text1']
+    word = request.args.get('text1')
+    # text2 = request.form['text2']
+    combine = morse_code(text1)
+    result = {
+        "output": combine
+    }
+    result = {str(key): value for key, value in result.items()}
+    return jsonify(result=result)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
