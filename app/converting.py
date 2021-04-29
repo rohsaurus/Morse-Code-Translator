@@ -24,6 +24,7 @@ def conversion(user_input):
     # Then, if it's present, the if statement will run. The program will get the value for that key and add it to
     # the final output variable
     # If the else runs, then that character is discarded
+
     while i < length:
         working_on = character_list[i]
         in_dict = working_on in character_list

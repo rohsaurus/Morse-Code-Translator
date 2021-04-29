@@ -9,9 +9,7 @@ app = Flask(__name__)
 
 def morse_code(text1):
     text1 = text1.lower()
-    # text2 = text2.upper()
     combine = conversion(text1)
-    # i think in order to work you need to get a return in converting.py method
     return combine
 
 
@@ -34,4 +32,4 @@ def my_form_post():
 
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(debug=False)
