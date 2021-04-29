@@ -1,5 +1,5 @@
 # webserver file
-# using flask, runs the websever
+# using flask, runs the webserver
 from flask import Flask, request, render_template, jsonify
 from converting import *
 from templates import *
@@ -32,4 +32,4 @@ def my_form_post():
 
 
 if __name__ == '__main__':
-   app.run(debug=False)
+    app.run(debug=False)
