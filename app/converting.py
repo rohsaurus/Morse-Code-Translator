@@ -1,9 +1,10 @@
+# importing built in python
 import json
 
 
-# function that will retrieve dictaniary value and then add it to the fial_output
+# function that will retrieve dictionary value and then add it to the final_output
 def conversion(user_input):
-    # importing json file and loading it in memory as a python dictanaroy
+    # importing json file and loading it in memory as a python dictionary
     with open("morsecode.json", "r") as rf:
         decoded_data = json.load(rf)
 
@@ -15,12 +16,12 @@ def conversion(user_input):
     length = len(character_list)
     i = 0
 
-    # string that will represetn the final value
+    # string that will represents the final value
     final_output = ""
 
     # will run until all the characters are iterated over
     # sets the current index in the length (a letter) to a char variable which will then test if that character is
-    # present in the dictanary made from the JSON file
+    # present in the dictionary made from the JSON file
     # Then, if it's present, the if statement will run. The program will get the value for that key and add it to
     # the final output variable
     # If the else runs, then that character is discarded
