@@ -33,7 +33,7 @@ def conversion(user_input):
             dict_value = decoded_data.get(working_on)
             # adding space because after every character there is a space
             final_output = final_output + dict_value + " "
-
+        # else statement is run if a value such as a space is detected that's not in the JSON
         else:
             final_output = final_output + "|"
         i = i + 1
