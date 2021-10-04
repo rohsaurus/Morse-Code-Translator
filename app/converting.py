@@ -27,14 +27,17 @@ def conversion(user_input):
     # If the else runs, then that character is discarded
 
     while i < length:
-        working_on = character_list[i]
-        in_dict = working_on in character_list
-        if in_dict:
-            dict_value = decoded_data.get(working_on)
-            # adding space because after every character there is a space
-            final_output = final_output + dict_value + " "
-        # else statement is run if a value such as a space is detected that's not in the JSON
-        else:
-            final_output = final_output + "|"
-        i = i + 1
+        try:
+            working_on = character_list[i]
+            in_dict = working_on in character_list
+            if in_dict:
+                dict_value = decoded_data.get(working_on)
+                # adding space because after every character there is a space
+                final_output = final_output + dict_value + " "
+            # else statement is run if a value such as a space is detected that's not in the JSON
+            else:
+                final_output = final_output + "|"
+            i = i + 1
+        except BaseException:
+            i = i + 1
     return final_output
