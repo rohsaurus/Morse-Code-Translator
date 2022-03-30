@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 def morse_code(text1):
     text1 = text1.lower()
-    combine = conversion(text1)
+    combine = englishToMorse(text1)
     return combine
 
 
