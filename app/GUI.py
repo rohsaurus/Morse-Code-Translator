@@ -1,5 +1,7 @@
 import PySimpleGUIQt as sg
-from converting import englishToMorse
+import decipher as decipher
+
+from converting import englishToMorse, morseToEnglish, decrypt
 import pyperclip as pc
 
 
@@ -9,9 +11,8 @@ layout = [[sg.Text('Welcome to the Morse Code Translator!')],
           [sg.Text(
               'Input English text to be translated to Morse Code. Spaces will be replaced with the | key.'),
               sg.InputText(key='-IN-')],
-          [sg.Text(key='-OUTPUT-')], [sg.Button('Copy')],
-          [sg.Text('Input morse code that you want translated to English. Please have a space between each.'),
-           sg.InputText(key='-INPUT-')],
+          [sg.Text(key='-OUTPUT-')], [sg.Button('Translate'), sg.Button('Copy')],
+          [sg.Text('Input morse code that you want translated to English. Please have a space between each.'), sg.InputText(key='-INPUT-')],
           [sg.Text(key='-EnglishOutput-')],
           [sg.Button('Translate'), sg.Button('Exit')]]
 # Create the window
@@ -23,6 +24,7 @@ while True:
     x = values['-IN-']
     y = englishToMorse(x)
     z = values['-INPUT-']
+    abc = decrypt(z)
 
 
     if event in (None, 'Exit'):
@@ -30,9 +32,12 @@ while True:
 
     # if user presses "translate"
     if event == 'Translate':
-        window['-OUTPUT-'].update(y)
+        if x:
+            window['-OUTPUT-'].update(y)
+        if z:
+            window['-EnglishOutput'].update(abc)
 
-        # if user clicks Copy
+    # if user clicks Copy
     if event == 'Copy':
         pc.copy(y)
     # End program if user closes window or
