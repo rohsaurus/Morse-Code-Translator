@@ -10,7 +10,7 @@ layout = [[sg.Text('Welcome to the Morse Code Translator!')],
               sg.InputText(key='-IN-')],
          # [sg.Text('Input morse code that you want translated to English. Please space out words with the | key.'),
           # sg.InputText(key='-INPUT-')],
-          [sg.Text(key='-OUTPUT-')],[sg.Button('Copy')],
+          [sg.Text(key='-OUTPUT-'), sg.Button('Copy')],
           [sg.Button('Translate'), sg.Button('Exit')],
           ]
 # Create the window
