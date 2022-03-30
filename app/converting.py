@@ -43,10 +43,9 @@ def englishToMorse(user_input):
     return final_output
 
 
-
 def morseToEnglish(user_input):
     # importing json file and loading it in memory as a python dictionary
-    with open("morseToEnglish.json", "r") as rf:
+    with open("morsecode.json", "r") as rf:
         decoded_data = json.load(rf)
 
     # breaking string into a list of characters
@@ -88,7 +87,6 @@ def decrypt(message):
     with open("morseToEnglish.json", "r") as rf:
         decoded_data = json.load(rf)
 
-
     # extra space added at the end to access the
     # last morse code
     message += ' '
@@ -117,11 +115,8 @@ def decrypt(message):
                 # adding space to separate words
                 decipher += ' '
             else:
-
-                # accessing the keys using their values (reverse of encryption)
+                # accessing the keys using their values
                 decipher += list(decoded_data.keys())[list(decoded_data.values()).index(citext)]
                 citext = ''
 
     return decipher
-
-
