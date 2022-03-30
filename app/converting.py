@@ -3,7 +3,7 @@ import json
 
 
 # function that will retrieve dictionary value and then add it to the final_output
-def conversion(user_input):
+def englishToMorse(user_input):
     # importing json file and loading it in memory as a python dictionary
     with open("morsecode.json", "r") as rf:
         decoded_data = json.load(rf)
@@ -42,9 +42,11 @@ def conversion(user_input):
             i = i + 1
     return final_output
 
-def toEnglish(user_input):
+
+
+def morseToEnglish(user_input):
     # importing json file and loading it in memory as a python dictionary
-    with open("toEnglish.json", "r") as rf:
+    with open("morseToEnglish.json", "r") as rf:
         decoded_data = json.load(rf)
 
     # breaking string into a list of characters
@@ -54,7 +56,7 @@ def toEnglish(user_input):
     length = len(character_list)
     i = 0
 
-    # string that will represents the final value
+    # string that will represent the final value
     final_output = ""
 
     # will run until all the characters are iterated over
@@ -79,3 +81,47 @@ def toEnglish(user_input):
         except BaseException:
             i = i + 1
     return final_output
+
+
+def decrypt(message):
+    # loading json file as a dictonary
+    with open("morseToEnglish.json", "r") as rf:
+        decoded_data = json.load(rf)
+
+
+    # extra space added at the end to access the
+    # last morse code
+    message += ' '
+
+    decipher = ''
+    citext = ''
+    for letter in message:
+
+        # checks for space
+        if (letter != ' '):
+
+            # counter to keep track of space
+            i = 0
+
+            # storing morse code of a single character
+            citext += letter
+
+        # in case of space
+        else:
+            # if i = 1 that indicates a new character
+            i += 1
+
+            # if i = 2 that indicates a new word
+            if i == 2:
+
+                # adding space to separate words
+                decipher += ' '
+            else:
+
+                # accessing the keys using their values (reverse of encryption)
+                decipher += list(decoded_data.keys())[list(decoded_data.values()).index(citext)]
+                citext = ''
+
+    return decipher
+
+
